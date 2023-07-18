@@ -1,0 +1,52 @@
+# Elixir
+/_build/
+/deps/
+
+# Phoenix artifacts
+/_build/dev/
+/_build/prod/
+/_build/test/
+/priv/static/
+
+# Compiled artifacts
+/ebin/
+/*.beam
+/*.so
+/*.o
+
+# Dependency directories
+/deps/
+/_build/
+
+# Environment variables
+/.env*
+
+# Editor directories and files
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*.swn
+*.swm
+/.elixir_ls
+
+# Test results
+/cover/
+/.result/
+
+# Build artifacts
+/build/
+
+# Release artifacts
+/rel/
+
+# Documentation
+/doc/
+
+# Configuration files
+/*.config
+/dev.exs
+/prod.exs
+
+# PDFs
+PDFs/*
