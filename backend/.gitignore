@@ -1,6 +1,6 @@
 # Elixir
 /_build/
-/deps/
+./deps/
 
 # Phoenix artifacts
 /_build/dev/
@@ -19,7 +19,9 @@
 /_build/
 
 # Environment variables
-/.env*
+.env
+config/dev.secret.exs
+
 
 # Editor directories and files
 /.idea/
