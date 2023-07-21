@@ -1,5 +1,5 @@
 // colors.js
-const colors = {
+export const colors = {
   transparent: "transparent",
   current: "currentColor",
   white: "#ffffff",
