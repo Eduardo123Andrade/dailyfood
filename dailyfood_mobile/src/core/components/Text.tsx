@@ -4,15 +4,26 @@ import {
   Text as TextNative,
   TextProps as NativeTextProps,
 } from 'react-native'
+import { colors } from 'theme/colors'
 
 interface TextProps extends NativeTextProps {
   fontSize?: number
+  color?: string
 }
 
-export const Text: React.FC<TextProps> = ({ fontSize, style, ...rest }) => {
-  const flattenStyle = StyleSheet.flatten([{ fontSize }, style])
+export const Text: React.FC<TextProps> = ({
+  color,
+  fontSize = 14,
+  style,
+  ...rest
+}) => {
+  const defaultColor = color ?? colors.gray[500]
+  const flattenStyle = StyleSheet.flatten([
+    { fontSize, color: defaultColor },
+    style,
+  ])
 
-  return <TextNative {...rest} style={flattenStyle} />
+  return <TextNative style={flattenStyle} {...rest} />
 }
 
 const styles = StyleSheet.create({
