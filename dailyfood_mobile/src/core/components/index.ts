@@ -1,3 +1,4 @@
 export { Screen } from './Screen'
-export { TextInput } from './TextInput'
+export { Separator } from './Separator'
 export { Text } from './Text'
+export { TextInput } from './TextInput'
