@@ -1,0 +1,1 @@
+export { useDailyFood } from './useDailyFood'
