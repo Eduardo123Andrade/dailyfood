@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 interface TextProps extends NativeTextProps {
-  fontSize: number
+  fontSize?: number
 }
 
 export const Text: React.FC<TextProps> = ({ fontSize, style, ...rest }) => {
