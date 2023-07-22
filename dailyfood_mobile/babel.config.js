@@ -9,7 +9,8 @@ module.exports = function(api) {
           alias: {
             authentication: "./src/authentication",
             core: "./src/core",
-            theme: "./src/theme"
+            theme: "./src/theme",
+            dailyfood: "./src/dailyfood"
           }
         }
       ],
