@@ -2,7 +2,7 @@ import React, { createContext, useMemo } from 'react'
 import { MMKV } from 'react-native-mmkv'
 
 interface StorageProviderProviderActions {
-  getData: <T = unknown>(key: string) => T
+  getData: <T = unknown>(key: string, initialValue?: T) => T
   setData: <T = unknown>(key: string, data: T) => void
 }
 
@@ -15,13 +15,19 @@ interface StorageProviderProviderProps {
   children: React.ReactNode
 }
 
-export const StorageProviderProvider: React.FC<
-  StorageProviderProviderProps
-> = ({ children }) => {
+export const StorageProvider: React.FC<StorageProviderProviderProps> = ({
+  children,
+}) => {
   const storage = useMemo(() => new MMKV({ id: 'dailyfood' }), [])
 
-  function getData<T = unknown>(key: string): T {
+  function getData<T = unknown>(key: string, initialValue?: T): T {
     const data = storage.getString(key)
+
+    if (!data && initialValue) {
+      setData(key, initialValue)
+      return JSON.parse(initialValue as any)
+    }
+
     return JSON.parse(data)
   }
 

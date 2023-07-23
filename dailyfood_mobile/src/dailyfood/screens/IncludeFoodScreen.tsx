@@ -1,9 +1,9 @@
 import { Button, Screen, Separator, TextInput } from 'core/components'
 import { RenderItem } from 'core/interface'
 import { FoodItemList } from 'dailyfood/components'
-import { useDailyFood } from 'dailyfood/hooks'
+import { useDailyFood, useSaveFood } from 'dailyfood/hooks'
 import { Food } from 'dailyfood/interfaces'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { SPACING } from 'theme'
 
@@ -19,6 +19,8 @@ export const IncludeFoodSCreen: React.FC = () => {
   const [name, setName] = useState<string>()
   const [{ foods }, { addFood }] = useDailyFood()
 
+  const saveFood = useSaveFood()
+
   const onSubmit = () => {
     addFood({
       id: Math.random() + '',
@@ -27,6 +29,12 @@ export const IncludeFoodSCreen: React.FC = () => {
     })
     setName('')
   }
+
+  const saveData = () => {
+    saveFood(foods)
+  }
+
+  useEffect(() => {})
 
   return (
     <Screen contentContainerStyles={styles.container}>
@@ -43,7 +51,7 @@ export const IncludeFoodSCreen: React.FC = () => {
         renderItem={renderItem}
         ItemSeparatorComponent={Separator}
       />
-      <Button disabled={false} onPress={() => console.log('oi')}>
+      <Button disabled={false} onPress={saveData}>
         Avançar
       </Button>
     </Screen>

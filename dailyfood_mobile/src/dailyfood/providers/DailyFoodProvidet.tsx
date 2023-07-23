@@ -1,6 +1,8 @@
 import { Food } from 'dailyfood/interfaces'
-import { MOCKED_LIST_FOOD } from 'dailyfood/mock/foods'
+// import { MOCKED_LIST_FOOD } from 'dailyfood/mock/foods'
 import React, { createContext, useState } from 'react'
+
+// TODO - Removed comments after
 
 interface DailyFoodProviderState {
   foods: Food[]
@@ -26,10 +28,11 @@ interface DailyFoodProviderProps {
 export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
   children,
 }) => {
-  const [foods, setFoods] = useState<Food[]>(MOCKED_LIST_FOOD)
+  // const [foods, setFoods] = useState<Food[]>(MOCKED_LIST_FOOD)
+  const [foods, setFoods] = useState<Food[]>([])
 
   const addFood = (food: Food) => {
-    setFoods(prevState => [...prevState, food])
+    setFoods((prevState) => [...prevState, food])
   }
 
   return (

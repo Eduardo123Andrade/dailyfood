@@ -1,1 +1,1 @@
-export { StorageProviderContext } from './StorageProvider'
+export * from './StorageProvider'
