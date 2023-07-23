@@ -3,9 +3,10 @@ import { RenderItem } from 'core/interface'
 import { FoodItemList } from 'dailyfood/components'
 import { useDailyFood, useSaveFood } from 'dailyfood/hooks'
 import { Food } from 'dailyfood/interfaces'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { SPACING } from 'theme'
+import { colors } from 'theme/colors'
 
 const renderItem = ({ item }: RenderItem<Food>) => {
   return (
@@ -17,6 +18,8 @@ const renderItem = ({ item }: RenderItem<Food>) => {
 
 export const IncludeFoodSCreen: React.FC = () => {
   const [name, setName] = useState<string>()
+  const [weight, setWeight] = useState<string>()
+
   const [{ foods }, { addFood }] = useDailyFood()
 
   const saveFood = useSaveFood()
@@ -25,35 +28,47 @@ export const IncludeFoodSCreen: React.FC = () => {
     addFood({
       id: Math.random() + '',
       name,
-      weight: 100,
+      weight: Number(weight),
     })
     setName('')
+    setWeight('')
   }
 
   const saveData = () => {
     saveFood(foods)
   }
 
-  useEffect(() => {})
-
   return (
     <Screen contentContainerStyles={styles.container}>
-      <TextInput
-        autoCapitalize="sentences"
-        placeholder="Nome"
-        value={name}
-        onChangeText={setName}
-        onSubmitEditing={onSubmit}
-      />
-
       <FlatList
         data={foods}
         renderItem={renderItem}
         ItemSeparatorComponent={Separator}
       />
-      <Button disabled={false} onPress={saveData}>
-        Avançar
-      </Button>
+
+      <View style={styles.footerContainer}>
+        <TextInput
+          autoCapitalize="sentences"
+          onChangeText={setName}
+          placeholder="Nome"
+          value={name}
+        />
+
+        <View style={styles.lastFooterRow}>
+          <TextInput
+            autoCapitalize="sentences"
+            keyboardType="number-pad"
+            onChangeText={setWeight}
+            placeholder="Peso"
+            value={weight}
+          />
+          <View style={styles.buttonContainer}>
+            <Button disabled={false} onPress={onSubmit}>
+              Avançar
+            </Button>
+          </View>
+        </View>
+      </View>
     </Screen>
   )
 }
@@ -65,5 +80,18 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     paddingVertical: SPACING.sm,
+    backgroundColor: colors.gray[800],
+  },
+  footerContainer: {
+    paddingVertical: SPACING.xs,
+  },
+  lastFooterRow: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingTop: SPACING.sm,
+  },
+  buttonContainer: {
+    width: '60%',
   },
 })
