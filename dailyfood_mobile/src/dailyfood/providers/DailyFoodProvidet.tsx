@@ -11,8 +11,8 @@ interface DailyFoodProviderState {
 
 interface DailyFoodProviderActions {
   addFood: (food: Food) => void
+  removeFood: (food: Food) => void
   selectFood: (food: Food) => void
-  updateFood: (food: Food) => void
 }
 
 type DailyFoodProviderData = [
@@ -39,7 +39,7 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
   children,
 }) => {
   const [foods, setFoods] = useState<Food[]>(LIST_FOOD)
-  const [currentFood, setCurrentFood] = useState<Food>(LIST_FOOD[0])
+  const [currentFood, setCurrentFood] = useState<Food>()
 
   const updateFood = (food: Food) => {
     setFoods((prevState) => {
@@ -65,6 +65,12 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
 
   const selectFood = (food: Food) => setCurrentFood(food)
 
+  const removeFood = (food: Food) => {
+    setFoods((prevSate) => {
+      return prevSate.filter((item) => item.id !== food.id)
+    })
+  }
+
   return (
     <DailyFoodContext.Provider
       children={children}
@@ -75,8 +81,8 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
         },
         {
           addFood,
+          removeFood,
           selectFood,
-          updateFood,
         },
       ]}
     />
