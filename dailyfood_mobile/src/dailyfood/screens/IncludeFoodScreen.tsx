@@ -1,4 +1,4 @@
-import { Screen, Separator, TextInput } from 'core/components'
+import { Button, Screen, Separator, TextInput } from 'core/components'
 import { RenderItem } from 'core/interface'
 import { FoodItemList } from 'dailyfood/components'
 import { useDailyFood } from 'dailyfood/hooks'
@@ -43,6 +43,9 @@ export const IncludeFoodSCreen: React.FC = () => {
         renderItem={renderItem}
         ItemSeparatorComponent={Separator}
       />
+      <Button disabled={false} onPress={() => console.log('oi')}>
+        Avançar
+      </Button>
     </Screen>
   )
 }
