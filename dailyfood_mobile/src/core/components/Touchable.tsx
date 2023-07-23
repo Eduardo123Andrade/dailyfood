@@ -6,8 +6,6 @@ import {
   View,
 } from 'react-native'
 
-const DEFAULT_LIGHT_UNDERLAY_COLOR = '#FFFFFFBF'
-
 interface TouchableProps extends TouchableHighlightProps {
   children: React.ReactNode
   enableFeedback?: boolean
@@ -22,13 +20,7 @@ const InternalTouchable: React.FC<TouchableProps> = ({
   if (enableFeedback) {
     return (
       <View style={style}>
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple(
-            DEFAULT_LIGHT_UNDERLAY_COLOR,
-            false,
-          )}
-          {...rest}
-        />
+        <TouchableNativeFeedback {...rest} />
       </View>
     )
   }
