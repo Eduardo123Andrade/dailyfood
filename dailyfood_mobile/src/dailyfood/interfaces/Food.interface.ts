@@ -1,5 +1,5 @@
 export interface Food {
-  id: string
+  id?: string
   name: string
   weight: number
 }

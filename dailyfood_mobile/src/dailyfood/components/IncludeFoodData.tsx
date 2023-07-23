@@ -1,6 +1,6 @@
 import { Button, TextInput } from 'core/components'
 import { useDailyFood } from 'dailyfood/hooks'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { SPACING } from 'theme'
 
@@ -10,11 +10,18 @@ export const IncludeFoodData: React.FC<IncludeFoodDataProps> = (props) => {
   const [name, setName] = useState<string>()
   const [weight, setWeight] = useState<string>()
 
-  const [{}, { addFood }] = useDailyFood()
+  const [{ currentFood }, { addFood }] = useDailyFood()
+
+  useEffect(() => {
+    if (currentFood) {
+      setName(currentFood.name)
+      setWeight(String(currentFood.weight ?? 0))
+    }
+  }, [currentFood])
 
   const onSubmit = () => {
     addFood({
-      id: Math.random() + '',
+      id: currentFood?.id,
       name,
       weight: Number(weight),
     })
