@@ -10,7 +10,7 @@ import { SPACING } from 'theme'
 
 interface TextInputProps extends NativeTextInputProps {}
 
-export const TextInput: React.FC<TextInputProps> = props => {
+export const TextInput: React.FC<TextInputProps> = (props) => {
   return (
     <View style={styles.container}>
       <NativeTextInput
@@ -24,12 +24,10 @@ export const TextInput: React.FC<TextInputProps> = props => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     paddingHorizontal: SPACING.md,
     borderBottomWidth: 1,
   },
   text: {
     color: colors.gray[400],
-    // color: "#F11",
   },
 })

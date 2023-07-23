@@ -11,7 +11,7 @@ export const Separator: React.FC<SeparatorProps> = ({ style, ...rest }) => {
 const styles = StyleSheet.create({
   container: {
     height: 0.65,
-    backgroundColor: colors.gray[800],
+    backgroundColor: colors.gray[700],
     width: '100%',
   },
 })
