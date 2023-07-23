@@ -8,6 +8,7 @@ import {
 import { Text } from './Text'
 import { Touchable } from './Touchable'
 import { colors } from 'theme/colors'
+import { SPACING } from 'theme'
 
 interface ButtonProps extends TouchableHighlightProps {
   children: string
@@ -45,8 +46,12 @@ export const Button: React.FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
     borderRadius: 10,
+    backgroundColor: colors.blue[700],
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.sm,
   },
   textContainer: {
     justifyContent: 'center',
