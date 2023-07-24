@@ -2,7 +2,11 @@ import { Food } from 'dailyfood/interfaces'
 import { MOCKED_LIST_FOOD } from 'dailyfood/mock/foods'
 import React, { createContext, useState } from 'react'
 
-// TODO - Removed comments after
+interface PartiallyFood {
+  id?: string
+  name: string
+  weight: number
+}
 
 interface DailyFoodProviderState {
   currentFood: Food
@@ -10,8 +14,8 @@ interface DailyFoodProviderState {
 }
 
 interface DailyFoodProviderActions {
-  addFood: (food: Food) => void
-  removeFood: (food: Food) => void
+  addFood: (food: PartiallyFood) => void
+  removeFood: (id: string) => void
   selectFood: (food: Food) => void
 }
 
@@ -41,21 +45,22 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
   const [foods, setFoods] = useState<Food[]>(LIST_FOOD)
   const [currentFood, setCurrentFood] = useState<Food>()
 
-  const updateFood = (food: Food) => {
+  const updateFood = (food: PartiallyFood) => {
     setFoods((prevState) => {
       const index = prevState.findIndex((item) => item.id === food.id)
-      prevState[index] = food
+      prevState[index] = { ...food, date: new Date() }
 
       return [...prevState]
     })
     setCurrentFood(undefined)
   }
 
-  const addFood = (food: Food) => {
+  const addFood = (food: PartiallyFood) => {
     if (!food.id) {
-      const foodData = {
+      const foodData: Food = {
         ...food,
-        io: Math.random() + '',
+        id: Math.random() + '',
+        date: new Date(),
       }
       return setFoods((prevState) => [...prevState, foodData])
     }
@@ -65,9 +70,9 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
 
   const selectFood = (food: Food) => setCurrentFood(food)
 
-  const removeFood = (food: Food) => {
+  const removeFood = (id: string) => {
     setFoods((prevSate) => {
-      return prevSate.filter((item) => item.id !== food.id)
+      return prevSate.filter((item) => item.id !== id)
     })
   }
 

@@ -19,7 +19,7 @@ export const FoodItemList: React.FC<FoodItemListProps> = ({ food }) => {
   }
 
   const onDeleteFood = () => {
-    removeFood(food)
+    removeFood(food.id)
   }
 
   return (

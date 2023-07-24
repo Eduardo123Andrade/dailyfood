@@ -25,6 +25,7 @@ export const IncludeFoodData: React.FC<IncludeFoodDataProps> = (props) => {
       name,
       weight: Number(weight),
     })
+
     setName('')
     setWeight('')
   }
