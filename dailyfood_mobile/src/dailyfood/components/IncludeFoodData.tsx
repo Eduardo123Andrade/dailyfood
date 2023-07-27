@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { SPACING } from 'theme'
 
-interface IncludeFoodDataProps {}
-
-export const IncludeFoodData: React.FC<IncludeFoodDataProps> = (props) => {
+export const IncludeFoodData: React.FC = () => {
   const [name, setName] = useState<string>()
   const [weight, setWeight] = useState<string>()
 
@@ -48,7 +46,7 @@ export const IncludeFoodData: React.FC<IncludeFoodDataProps> = (props) => {
           value={weight}
         />
         <View style={styles.buttonContainer}>
-          <Button onPress={onSubmit}>Avançar</Button>
+          <Button onPress={onSubmit}>Adicionar</Button>
         </View>
       </View>
     </View>
