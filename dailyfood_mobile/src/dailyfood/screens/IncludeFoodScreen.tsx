@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: SPACING.md,
+    paddingTop: 0,
   },
   itemContainer: {
     paddingVertical: SPACING.sm,
