@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Icon } from './Icon'
 import { useNavigation } from '@react-navigation/native'
 import { SPACING } from 'theme'
+import { Text } from './Text'
+import { colors } from 'theme/colors'
 
 interface BaseNavigationHeaderProps {
+  iconColor?: string
   iconName?: string
   onPress?: () => void
   title: string
 }
 
 export const BaseNavigationHeader: React.FC<BaseNavigationHeaderProps> = ({
+  iconColor,
   iconName,
   onPress,
   title,
@@ -41,13 +45,13 @@ export const BaseNavigationHeader: React.FC<BaseNavigationHeaderProps> = ({
         <View style={styles.emptyView} />
       )}
 
-      <Text style={{ color: '#3c3', fontSize: 18, fontWeight: 'bold' }}>
+      <Text bold fontSize={18}>
         {title}
       </Text>
 
       {!!iconName ? (
         <View>
-          <Icon onPress={_onPress} name={iconName} />
+          <Icon color={iconColor} onPress={_onPress} name={iconName} />
         </View>
       ) : (
         <View style={styles.emptyView} />
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: SPACING.md,
     height: 60,
-    backgroundColor: '#f4511e',
+    backgroundColor: colors.gray[900],
   },
   emptyView: {
     width: SPACING.md,
