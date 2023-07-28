@@ -25,7 +25,7 @@ export const StorageProvider: React.FC<StorageProviderProviderProps> = ({
 
     if (!data && initialValue) {
       setData(key, initialValue)
-      return JSON.parse(initialValue as any)
+      return initialValue
     }
 
     return JSON.parse(data)
