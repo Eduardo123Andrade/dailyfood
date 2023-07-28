@@ -1,3 +1,4 @@
+export { BaseNavigationHeader } from './BaseNavigationHeader'
 export { Button } from './Button'
 export { Icon } from './Icon'
 export { Screen } from './Screen'
