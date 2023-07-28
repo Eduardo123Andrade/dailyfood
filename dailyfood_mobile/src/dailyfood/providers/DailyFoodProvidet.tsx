@@ -1,3 +1,4 @@
+import { generateUUID } from 'core/utils'
 import { Food } from 'dailyfood/interfaces'
 import { MOCKED_LIST_FOOD } from 'dailyfood/mock/foods'
 import React, { createContext, useState } from 'react'
@@ -59,7 +60,7 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
     if (!food.id) {
       const foodData: Food = {
         ...food,
-        id: Math.random() + '',
+        id: generateUUID(),
         date: new Date(),
       }
       return setFoods((prevState) => [...prevState, foodData])
