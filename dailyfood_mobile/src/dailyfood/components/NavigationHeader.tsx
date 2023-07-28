@@ -1,16 +1,22 @@
 import { BaseNavigationHeader } from 'core/components'
+import { useDailyFood, useSaveFood } from 'dailyfood/hooks'
 import React from 'react'
+import { colors } from 'theme/colors'
 
 export const NavigationHeader = () => {
-  const onPressBack = () => {
-    console.log('oi')
+  const saveFoods = useSaveFood()
+  const [{ foods }] = useDailyFood()
+
+  const onSave = () => {
+    saveFoods(foods)
   }
 
   return (
     <BaseNavigationHeader
+      iconColor={colors.gray[500]}
       title="DailyFood"
       iconName="save"
-      onPress={onPressBack}
+      onPress={onSave}
     />
   )
 }
