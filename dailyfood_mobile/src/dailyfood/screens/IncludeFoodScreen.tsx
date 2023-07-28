@@ -1,6 +1,11 @@
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { Screen, Separator } from 'core/components'
 import { RenderItem } from 'core/interface'
-import { FoodItemList, IncludeFoodData } from 'dailyfood/components'
+import {
+  FoodItemList,
+  IncludeFoodData,
+  NavigationHeader,
+} from 'dailyfood/components'
 import { useDailyFood } from 'dailyfood/hooks'
 import { Food } from 'dailyfood/interfaces'
 import React from 'react'
@@ -16,7 +21,7 @@ const renderItem = ({ item }: RenderItem<Food>) => {
   )
 }
 
-export const IncludeFoodSCreen: React.FC = () => {
+export const IncludeFoodSCreen = () => {
   const [{ foods }] = useDailyFood()
 
   return (
@@ -33,6 +38,12 @@ export const IncludeFoodSCreen: React.FC = () => {
     </Screen>
   )
 }
+
+const navigationOptions: NativeStackNavigationOptions = {
+  header: () => <NavigationHeader />,
+}
+
+IncludeFoodSCreen.NavigationOptions = navigationOptions
 
 const styles = StyleSheet.create({
   container: {
