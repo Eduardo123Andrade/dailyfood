@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.md,
   },
   actionContainer: {
-    // backgroundColor: '#FF1',
     flexDirection: 'row',
   },
 })

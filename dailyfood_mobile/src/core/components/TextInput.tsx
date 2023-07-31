@@ -5,17 +5,20 @@ import {
   TextInputProps as NativeTextInputProps,
   View,
 } from 'react-native'
-import { colors } from 'theme/colors'
 import { SPACING } from 'theme'
+import { useTheme } from 'core/hooks/useTheme'
 
 interface TextInputProps extends NativeTextInputProps {}
 
 export const TextInput: React.FC<TextInputProps> = (props) => {
+  const [{ colors }] = useTheme()
+  const textColor = { color: colors.textColor }
+
   return (
     <View style={styles.container}>
       <NativeTextInput
-        placeholderTextColor={colors.gray[700]}
-        style={styles.text}
+        placeholderTextColor={colors.placeholderColor}
+        style={textColor}
         {...props}
       />
     </View>
@@ -26,8 +29,5 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SPACING.md,
     borderBottomWidth: 1,
-  },
-  text: {
-    color: colors.gray[400],
   },
 })

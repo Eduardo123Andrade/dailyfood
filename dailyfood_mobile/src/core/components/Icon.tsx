@@ -12,6 +12,7 @@ interface IconProps {
   onPress: () => void
 }
 
+// TODO - ajustar essa cor
 export const Icon: React.FC<IconProps> = ({
   color = '#000',
   size = 20,
