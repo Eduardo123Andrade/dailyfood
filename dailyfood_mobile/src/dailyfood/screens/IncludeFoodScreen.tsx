@@ -43,7 +43,7 @@ export const IncludeFoodSCreen = () => {
 }
 
 const navigationOptions: NativeStackNavigationOptions = {
-  header: () => <NavigationHeader />,
+  header: () => <NavigationHeader title="Inserir alimentos" />,
 }
 
 IncludeFoodSCreen.NavigationOptions = navigationOptions
