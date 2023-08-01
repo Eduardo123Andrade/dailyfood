@@ -3,21 +3,16 @@ import { useTheme } from 'core/hooks/useTheme'
 import { useDailyFood, useSaveFood } from 'dailyfood/hooks'
 import React from 'react'
 
-export const NavigationHeader = () => {
-  const saveFoods = useSaveFood()
-  const [{ foods }] = useDailyFood()
+interface NavigationHeaderProps {
+  title: string
+}
+
+export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
+  title,
+}) => {
   const [{ colors }] = useTheme()
 
-  const onSave = () => {
-    saveFoods(foods)
-  }
-
   return (
-    <BaseNavigationHeader
-      iconColor={colors.lightIconColor}
-      title="DailyFood"
-      iconName="save"
-      onPress={onSave}
-    />
+    <BaseNavigationHeader iconColor={colors.lightIconColor} title={title} />
   )
 }
