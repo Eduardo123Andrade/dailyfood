@@ -5,9 +5,9 @@ import { StyleSheet } from 'react-native'
 
 interface IconProps {
   color?: string
-  size?: number
   name: any
   onPress: () => void
+  size?: number
 }
 
 // TODO - ajustar essa cor
