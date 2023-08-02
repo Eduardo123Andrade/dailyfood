@@ -10,7 +10,9 @@ import {
 import { MarkingProps } from 'react-native-calendars/src/calendar/day/marking'
 import { Theme as CalendarTheme } from 'react-native-calendars/src/types'
 
-interface CalendarProps {}
+interface CalendarProps {
+  onSelectedDates: (dates: string[]) => void
+}
 
 LocaleConfig.locales['br'] = {
   monthNames: [
@@ -56,7 +58,7 @@ LocaleConfig.locales['br'] = {
 
 LocaleConfig.defaultLocale = 'br'
 
-export const Calendar: React.FC<CalendarProps> = (props) => {
+export const Calendar: React.FC<CalendarProps> = ({ onSelectedDates }) => {
   const [initialDates, setInitialDates] = useState([])
   const [selectedDates, setSelectedDates] = useState<any>()
   const [{ colors }] = useTheme()
@@ -98,6 +100,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
 
       const grouped = formatDates(result)
 
+      onSelectedDates(result)
       setSelectedDates(grouped)
       setInitialDates([])
     }

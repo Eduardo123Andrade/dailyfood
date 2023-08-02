@@ -12,7 +12,5 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
 }) => {
   const [{ colors }] = useTheme()
 
-  return (
-    <BaseNavigationHeader iconColor={colors.lightIconColor} title={title} />
-  )
+  return <BaseNavigationHeader iconColor={colors.lightIcon} title={title} />
 }
