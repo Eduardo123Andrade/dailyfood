@@ -1,5 +1,6 @@
 export { BaseNavigationHeader } from './BaseNavigationHeader'
 export { Button } from './Button'
+export { Calendar } from './Calendar'
 export { Icon } from './Icon'
 export { Screen } from './Screen'
 export { Separator } from './Separator'
