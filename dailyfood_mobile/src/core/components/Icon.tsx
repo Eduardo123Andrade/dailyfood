@@ -3,15 +3,14 @@ import React from 'react'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { StyleSheet } from 'react-native'
 
-console.log(MaterialIcons.getFontFamily())
-
 interface IconProps {
   color?: string
-  size?: number
   name: any
   onPress: () => void
+  size?: number
 }
 
+// TODO - ajustar essa cor
 export const Icon: React.FC<IconProps> = ({
   color = '#000',
   size = 20,
@@ -20,7 +19,7 @@ export const Icon: React.FC<IconProps> = ({
   const style = styles.container
   const props = { color, size, style, ...rest }
 
-  return <MaterialIcons name="wine-bar" {...props} />
+  return <MaterialIcons {...props} />
 }
 
 const styles = StyleSheet.create({

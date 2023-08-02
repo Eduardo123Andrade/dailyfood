@@ -7,8 +7,8 @@ import {
 } from 'react-native'
 import { Text } from './Text'
 import { Touchable } from './Touchable'
-import { colors } from 'theme/colors'
 import { SPACING } from 'theme'
+import { useTheme } from 'core/hooks/useTheme'
 
 interface ButtonProps extends TouchableHighlightProps {
   children: string
@@ -23,20 +23,23 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...rest
 }) => {
+  const [{ colors }] = useTheme()
+  const flattenedStyles = StyleSheet.flatten([
+    styles.container,
+    {
+      backgroundColor: disabled ? colors.disabled : colors.secondary,
+    },
+    style,
+  ])
+
   return (
     <Touchable disabled={disabled || isLoading} {...rest}>
-      <View
-        style={[
-          styles.container,
-          style,
-          { backgroundColor: disabled ? colors.blue[300] : colors.blue[900] },
-        ]}
-      >
+      <View style={flattenedStyles}>
         {isLoading ? (
-          <ActivityIndicator size="small" color={'#F11'} />
+          <ActivityIndicator size="small" color={colors.error} />
         ) : (
           <View style={styles.textContainer}>
-            <Text color={colors.gray[100]}>{children}</Text>
+            <Text color={colors.buttonLabel}>{children}</Text>
           </View>
         )}
       </View>
@@ -47,7 +50,6 @@ export const Button: React.FC<ButtonProps> = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    backgroundColor: colors.blue[700],
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: SPACING.md,

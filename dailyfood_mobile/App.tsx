@@ -1,30 +1,32 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { StorageProvider } from 'core/providers'
-import { StyleSheet } from 'react-native'
+import { StorageProvider, ThemeProvider } from 'core/providers'
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import {
+  NativeStackNavigationOptions,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack'
 import { DailyFoodNavigator } from 'dailyfood'
 
 const Stack = createNativeStackNavigator()
 
+const screenOptions: NativeStackNavigationOptions = {
+  headerShown: false,
+}
+
 export default function App() {
   return (
     <StorageProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="DailyFood" component={DailyFoodNavigator} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ThemeProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+              name="DailyFood"
+              component={DailyFoodNavigator}
+              options={screenOptions}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </StorageProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})

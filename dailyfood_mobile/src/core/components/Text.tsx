@@ -1,10 +1,10 @@
+import { useTheme } from 'core/hooks/useTheme'
 import React from 'react'
 import {
   TextProps as NativeTextProps,
   StyleSheet,
   Text as TextNative,
 } from 'react-native'
-import { colors } from 'theme/colors'
 
 interface TextProps extends NativeTextProps {
   bold?: boolean
@@ -19,8 +19,10 @@ export const Text: React.FC<TextProps> = ({
   style,
   ...rest
 }) => {
+  const [{ colors }] = useTheme()
+
   const fontWeight = bold ? 'bold' : 'normal'
-  const defaultColor = color ?? colors.gray[500]
+  const defaultColor = color ?? colors.textColor
 
   const flattenStyle = StyleSheet.flatten([
     style,

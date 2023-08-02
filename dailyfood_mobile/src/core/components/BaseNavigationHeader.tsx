@@ -4,7 +4,7 @@ import { Icon } from './Icon'
 import { useNavigation } from '@react-navigation/native'
 import { SPACING } from 'theme'
 import { Text } from './Text'
-import { colors } from 'theme/colors'
+import { useTheme } from 'core/hooks/useTheme'
 
 interface BaseNavigationHeaderProps {
   iconColor?: string
@@ -22,13 +22,19 @@ export const BaseNavigationHeader: React.FC<BaseNavigationHeaderProps> = ({
   const [canGoBack, setCanGoBack] = useState(false)
 
   const navigation = useNavigation()
+  const [{ colors }] = useTheme()
+
+  const flattenedStyles = StyleSheet.flatten([
+    styles.container,
+    { backgroundColor: colors.background },
+  ])
 
   useEffect(() => {
     setCanGoBack(navigation.canGoBack())
   }, [])
 
   const onPressBack = () => {
-    console.log('oi')
+    if (navigation.canGoBack()) navigation.goBack()
   }
 
   const _onPress = () => {
@@ -36,7 +42,7 @@ export const BaseNavigationHeader: React.FC<BaseNavigationHeaderProps> = ({
   }
 
   return (
-    <View style={styles.container}>
+    <View style={flattenedStyles}>
       {canGoBack ? (
         <View>
           <Icon onPress={onPressBack} name="arrow-back" />
@@ -67,7 +73,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: SPACING.md,
     height: 60,
-    backgroundColor: colors.gray[900],
   },
   emptyView: {
     width: SPACING.md,
