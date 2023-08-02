@@ -106,12 +106,12 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
   const theme: CalendarTheme = {
     textDayFontSize: 14,
     dayTextColor: colors.textColor,
-    textDisabledColor: colors.placeholderColor,
+    textDisabledColor: colors.placeholder,
 
     textSectionTitleColor: colors.textColor,
 
-    backgroundColor: colors.surfaceColor,
-    calendarBackground: colors.surfaceColor,
+    backgroundColor: colors.surface,
+    calendarBackground: colors.surface,
 
     textMonthFontWeight: 'bold',
     textMonthFontSize: 22,

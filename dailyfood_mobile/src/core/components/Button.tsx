@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
   const flattenedStyles = StyleSheet.flatten([
     styles.container,
     {
-      backgroundColor: disabled ? colors.disabled : colors.buttonBackground,
+      backgroundColor: disabled ? colors.disabled : colors.secondary,
     },
     style,
   ])

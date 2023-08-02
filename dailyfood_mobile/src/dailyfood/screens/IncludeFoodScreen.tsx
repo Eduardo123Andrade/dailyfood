@@ -18,7 +18,7 @@ export const IncludeFoodSCreen = () => {
   const [{ colors }] = useTheme()
 
   const renderItem = ({ item }: RenderItem<Food>) => {
-    const backgroundColor = colors.surfaceColor
+    const backgroundColor = colors.surface
 
     return (
       <View key={item.id} style={[styles.itemContainer, { backgroundColor }]}>

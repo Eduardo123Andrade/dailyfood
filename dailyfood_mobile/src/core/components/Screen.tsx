@@ -14,7 +14,7 @@ export const Screen: React.FC<ScreenProps> = (
   const [{ colors }] = useTheme()
   const flattenedStyles = StyleSheet.flatten([
     styles.container,
-    { backgroundColor: colors.backgroundColor },
+    { backgroundColor: colors.background },
     contentContainerStyles,
   ])
 

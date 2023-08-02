@@ -8,7 +8,7 @@ export const Separator: React.FC<SeparatorProps> = ({ style, ...rest }) => {
   const [{ colors }] = useTheme()
   const flattenedStyles = StyleSheet.flatten([
     styles.container,
-    { backgroundColor: colors.placeholderColor },
+    { backgroundColor: colors.placeholder },
     style,
   ])
 

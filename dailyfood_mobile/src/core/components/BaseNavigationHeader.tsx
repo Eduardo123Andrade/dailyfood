@@ -26,7 +26,7 @@ export const BaseNavigationHeader: React.FC<BaseNavigationHeaderProps> = ({
 
   const flattenedStyles = StyleSheet.flatten([
     styles.container,
-    { backgroundColor: colors.backgroundColor },
+    { backgroundColor: colors.background },
   ])
 
   useEffect(() => {
