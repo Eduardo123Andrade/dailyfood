@@ -10,7 +10,8 @@ module.exports = function(api) {
             authentication: "./src/authentication",
             core: "./src/core",
             theme: "./src/theme",
-            dailyfood: "./src/dailyfood"
+            dailyfood: "./src/dailyfood",
+            home: "./src/home"
           }
         }
       ],
