@@ -1,6 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { SingUpScreen, WelcomeScreen } from './screens'
+import { LoginScreen, SingUpScreen, WelcomeScreen } from './screens'
 
 const Stack = createNativeStackNavigator()
 
@@ -13,6 +13,11 @@ export const AuthenticationNavigator = () => {
         options={WelcomeScreen.NavigationOptions}
       />
 
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={LoginScreen.NavigationOptions}
+      />
       <Stack.Screen
         name="SingUpScreen"
         component={SingUpScreen}
