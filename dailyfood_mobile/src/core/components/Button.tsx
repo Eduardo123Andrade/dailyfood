@@ -8,7 +8,7 @@ import {
 import { Text } from './Text'
 import { Touchable } from './Touchable'
 import { SPACING } from 'theme'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 
 interface ButtonProps extends TouchableHighlightProps {
   children: string

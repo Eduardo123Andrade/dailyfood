@@ -1,4 +1,4 @@
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 import React from 'react'
 import { StyleProp, StyleSheet, View, ViewProps, ViewStyle } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'

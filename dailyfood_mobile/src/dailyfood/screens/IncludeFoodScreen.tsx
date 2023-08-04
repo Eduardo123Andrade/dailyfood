@@ -1,6 +1,6 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { Screen, Separator } from 'core/components'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 import { RenderItem } from 'core/interface'
 import {
   FoodItemList,

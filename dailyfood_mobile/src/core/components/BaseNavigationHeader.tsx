@@ -4,7 +4,7 @@ import { Icon } from './Icon'
 import { useNavigation } from '@react-navigation/native'
 import { SPACING } from 'theme'
 import { Text } from './Text'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 
 interface BaseNavigationHeaderProps {
   iconColor?: string
