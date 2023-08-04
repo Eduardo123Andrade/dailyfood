@@ -4,7 +4,7 @@ import { Icon } from './Icon'
 import { useNavigation } from '@react-navigation/native'
 import { SPACING } from 'theme'
 import { Text } from './Text'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 
 interface BaseNavigationHeaderProps {
   iconColor?: string
@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: SPACING.md,
+    paddingHorizontal: SPACING.MD,
     height: 60,
   },
   emptyView: {
-    width: SPACING.md,
+    width: SPACING.MD,
   },
 })

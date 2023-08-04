@@ -1,6 +1,6 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { Screen, Separator } from 'core/components'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 import { RenderItem } from 'core/interface'
 import {
   FoodItemList,
@@ -51,13 +51,13 @@ IncludeFoodSCreen.NavigationOptions = navigationOptions
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: SPACING.md,
+    padding: SPACING.MD,
     paddingTop: 0,
   },
   itemContainer: {
-    paddingVertical: SPACING.sm,
+    paddingVertical: SPACING.SM,
   },
   footerContainer: {
-    paddingVertical: SPACING.xs,
+    paddingVertical: SPACING.XS,
   },
 })

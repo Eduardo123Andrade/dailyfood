@@ -1,4 +1,4 @@
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 import { getDatesBetween } from 'core/utils'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'

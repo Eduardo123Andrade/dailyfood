@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native'
 import { SPACING } from 'theme'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 
 interface TextInputProps extends NativeTextInputProps {}
 
@@ -27,7 +27,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: SPACING.md,
+    paddingHorizontal: SPACING.MD,
     borderBottomWidth: 1,
   },
 })

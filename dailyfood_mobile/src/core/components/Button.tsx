@@ -8,7 +8,7 @@ import {
 import { Text } from './Text'
 import { Touchable } from './Touchable'
 import { SPACING } from 'theme'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 
 interface ButtonProps extends TouchableHighlightProps {
   children: string
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.MD,
+    paddingVertical: SPACING.SM,
   },
   textContainer: {
     justifyContent: 'center',

@@ -1,4 +1,4 @@
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 import React from 'react'
 import {
   TextProps as NativeTextProps,

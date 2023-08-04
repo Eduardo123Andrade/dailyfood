@@ -1,5 +1,5 @@
 import { BaseNavigationHeader } from 'core/components'
-import { useTheme } from 'core/hooks/useTheme'
+import { useTheme } from 'core/hooks'
 import { useDailyFood, useSaveFood } from 'dailyfood/hooks'
 import React from 'react'
 

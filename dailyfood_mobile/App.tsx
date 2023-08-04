@@ -6,6 +6,8 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack'
 import { DailyFoodNavigator } from 'dailyfood'
+import { AuthenticationNavigator } from 'authentication'
+import { HomeScreen } from 'home/screens/HomeScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +24,18 @@ export default function App() {
             <Stack.Screen
               name="DailyFood"
               component={DailyFoodNavigator}
+              options={screenOptions}
+            />
+
+            <Stack.Screen
+              name="Authentication"
+              component={AuthenticationNavigator}
+              options={screenOptions}
+            />
+
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
               options={screenOptions}
             />
           </Stack.Navigator>
