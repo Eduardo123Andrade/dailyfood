@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: SPACING.md,
+    paddingHorizontal: SPACING.MD,
     height: 60,
   },
   emptyView: {
-    width: SPACING.md,
+    width: SPACING.MD,
   },
 })

@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    paddingBottom: SPACING.lg,
-    paddingHorizontal: SPACING.lg,
+    paddingBottom: SPACING.LG,
+    paddingHorizontal: SPACING.LG,
   },
   calendarContainer: {
     borderRadius: 20,

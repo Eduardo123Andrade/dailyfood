@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.MD,
+    paddingVertical: SPACING.SM,
   },
   textContainer: {
     justifyContent: 'center',

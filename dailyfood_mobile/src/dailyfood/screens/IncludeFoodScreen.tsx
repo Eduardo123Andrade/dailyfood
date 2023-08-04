@@ -51,13 +51,13 @@ IncludeFoodSCreen.NavigationOptions = navigationOptions
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: SPACING.md,
+    padding: SPACING.MD,
     paddingTop: 0,
   },
   itemContainer: {
-    paddingVertical: SPACING.sm,
+    paddingVertical: SPACING.SM,
   },
   footerContainer: {
-    paddingVertical: SPACING.xs,
+    paddingVertical: SPACING.XS,
   },
 })

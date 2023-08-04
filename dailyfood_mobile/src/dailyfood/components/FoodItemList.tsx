@@ -9,7 +9,7 @@ interface FoodItemListProps {
   food: Food
 }
 
-const GAP = SPACING.xs / 2
+const GAP = SPACING.XS / 2
 
 export const FoodItemList: React.FC<FoodItemListProps> = ({ food }) => {
   const [, { removeFood, selectFood }] = useDailyFood()
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: GAP,
-    paddingHorizontal: SPACING.md,
+    paddingHorizontal: SPACING.MD,
   },
   actionContainer: {
     flexDirection: 'row',

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingTop: SPACING.sm,
+    paddingTop: SPACING.SM,
   },
   buttonContainer: {
     width: '60%',

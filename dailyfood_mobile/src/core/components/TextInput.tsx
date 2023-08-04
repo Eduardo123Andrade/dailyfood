@@ -27,7 +27,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: SPACING.md,
+    paddingHorizontal: SPACING.MD,
     borderBottomWidth: 1,
   },
 })
