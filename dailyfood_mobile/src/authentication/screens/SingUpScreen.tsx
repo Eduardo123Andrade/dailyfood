@@ -1,4 +1,6 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { useAuthentication } from 'authentication/hooks'
+import { SingUp } from 'authentication/interfaces'
 import {
   BaseNavigationHeader,
   Button,
@@ -7,17 +9,11 @@ import {
 } from 'core/components'
 import { useForm } from 'core/hooks'
 import { FieldValidation, validateName } from 'core/validations'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SPACING } from 'theme'
 
 const { string } = FieldValidation
-
-interface SingUpForm {
-  email: string
-  name: string
-  password: string
-}
 
 const SING_UP_VALIDATION_SCHEMA = FieldValidation.object({
   name: string()
@@ -31,33 +27,26 @@ const SING_UP_VALIDATION_SCHEMA = FieldValidation.object({
     .label('Senha'),
 })
 
-const INITIAL_VALUES: SingUpForm = {
+const INITIAL_VALUES: SingUp = {
   email: '',
   name: '',
   password: '',
 }
 
 export const SingUpScreen = () => {
-  const onSubmit = (data: SingUpForm) => {
-    console.log(data)
-  }
+  const { singUp } = useAuthentication()
 
-  const { handleSubmit, isValid, getFieldProps } = useForm<SingUpForm>({
+  const onSubmit = (data: SingUp) => singUp(data)
+
+  const { handleSubmit, isValid, getFieldProps } = useForm<SingUp>({
     onSubmit,
     initialValues: INITIAL_VALUES,
     validationSchema: SING_UP_VALIDATION_SCHEMA,
   })
 
-  useEffect(() => {
-    console.log({ isValid })
-  }, [isValid])
   const nameProps = getFieldProps('name')
   const emailProps = getFieldProps('email')
   const passwordProps = getFieldProps('password')
-
-  // const onPress = () => {
-  //   console.log('salvar')
-  // }
 
   const onPress = () => handleSubmit()
 
