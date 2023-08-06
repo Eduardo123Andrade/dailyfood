@@ -4,29 +4,31 @@ defmodule DailyfoodWeb.Router do
   alias DailyfoodWeb.Plugs.UUIDChecker
 
   pipeline :api do
-    plug :accepts, ["json"]
-    plug UUIDChecker
+    plug(:accepts, ["json"])
+    plug(UUIDChecker)
   end
 
   pipeline :auth do
-    plug DailyfoodWeb.Auth.Pipeline
+    plug(DailyfoodWeb.Auth.Pipeline)
   end
 
   scope "/api", DailyfoodWeb do
-    pipe_through [:api, :auth]
+    pipe_through([:api, :auth])
 
-    get "/users/", UsersController, :show
-    put "/users/", UsersController, :update
+    get("/users/", UsersController, :show)
+    put("/users/", UsersController, :update)
 
-    post "/meals/create", MealsController, :create
-    get "/meals/:initial_date/:final_date", MealsController, :show
-    post "/meals/generate-pdf", MealsController, :generate_pdf
+    post("/meals/create", MealsController, :create)
+    get("/meals/:initial_date/:final_date", MealsController, :show)
+    post("/meals/generate-pdf", MealsController, :generate_pdf)
   end
 
   scope "/api", DailyfoodWeb do
-    pipe_through :api
-    post "/auth/login", AuthController, :login
-    post "/auth/sing_up", AuthController, :sing_up
+    pipe_through(:api)
+    post("/auth/login", AuthController, :login)
+    post("/auth/sing_up", AuthController, :sing_up)
+
+    get("health_check", HealthCheckController, :health)
   end
 
   # Enables LiveDashboard only for development
@@ -40,9 +42,9 @@ defmodule DailyfoodWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through [:fetch_session, :protect_from_forgery]
+      pipe_through([:fetch_session, :protect_from_forgery])
 
-      live_dashboard "/dashboard", metrics: DailyfoodWeb.Telemetry
+      live_dashboard("/dashboard", metrics: DailyfoodWeb.Telemetry)
     end
   end
 
@@ -52,9 +54,9 @@ defmodule DailyfoodWeb.Router do
   # node running the Phoenix server.
   if Mix.env() == :dev do
     scope "/dev" do
-      pipe_through [:fetch_session, :protect_from_forgery]
+      pipe_through([:fetch_session, :protect_from_forgery])
 
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
+      forward("/mailbox", Plug.Swoosh.MailboxPreview)
     end
   end
 end
