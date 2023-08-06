@@ -26,8 +26,8 @@ export const UserProvider: React.FC<UserProvider> = ({ children }) => {
   const { getData } = useStorage()
 
   useEffect(() => {
-    const user = getData<User>(USER_KEY) ?? {}
-    if (user) updateUser({} as User)
+    const user = getData<User>(USER_KEY)
+    if (user) updateUser(user)
   }, [])
 
   const setUser = (user: User) => {
