@@ -6,17 +6,14 @@ import {
 } from 'react-query'
 import { AxiosError, AxiosResponse } from 'axios'
 import { useAPI } from './useApi'
-
-interface TError {
-  message: string
-}
+import { RequestError } from 'core/interfaces'
 
 export type UsePostRequestStatus = MutationStatus
 
 export interface UsePostRequestOptionsType<TData, TVariables>
   extends UseMutationOptions<
     AxiosResponse<TData>,
-    AxiosError<TError>,
+    AxiosError<RequestError>,
     TVariables,
     any
   > {}
@@ -31,8 +28,10 @@ export const usePostRequest = <TData = any, TVariables = any>(
     data,
   ) => API.post(url, data)
 
-  return useMutation<AxiosResponse<TData>, AxiosError<TError>, TVariables, any>(
-    mutationFunction,
-    options,
-  )
+  return useMutation<
+    AxiosResponse<TData>,
+    AxiosError<RequestError>,
+    TVariables,
+    any
+  >(mutationFunction, options)
 }

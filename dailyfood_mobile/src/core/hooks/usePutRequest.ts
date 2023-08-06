@@ -6,15 +6,20 @@ import {
 } from 'react-query'
 import { AxiosError, AxiosResponse } from 'axios'
 import { useAPI } from './useApi'
+import { RequestError } from 'core/interfaces'
 
 export type UsePutRequestStatus = MutationStatus
 
-export type UsePutRequestOptionsType<TData, TError, TVariables> =
-  UseMutationOptions<AxiosResponse<TData>, AxiosError<TError>, TVariables, any>
+export type UsePutRequestOptionsType<TData, TVariables> = UseMutationOptions<
+  AxiosResponse<TData>,
+  AxiosError<RequestError>,
+  TVariables,
+  any
+>
 
-export const usePutRequest = <TData = any, TVariables = any, TError = any>(
+export const usePutRequest = <TData = any, TVariables = any>(
   url: string,
-  options?: UsePutRequestOptionsType<TData, TError, TVariables>,
+  options?: UsePutRequestOptionsType<TData, TVariables>,
 ) => {
   const { API } = useAPI()
 
@@ -22,8 +27,10 @@ export const usePutRequest = <TData = any, TVariables = any, TError = any>(
     data,
   ) => API.put(url, data)
 
-  return useMutation<AxiosResponse<TData>, AxiosError<TError>, TVariables, any>(
-    mutationFunction,
-    options,
-  )
+  return useMutation<
+    AxiosResponse<TData>,
+    AxiosError<RequestError>,
+    TVariables,
+    any
+  >(mutationFunction, options)
 }

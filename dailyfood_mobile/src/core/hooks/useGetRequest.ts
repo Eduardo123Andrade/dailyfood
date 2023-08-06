@@ -7,35 +7,32 @@ import {
 } from 'react-query'
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import { useAPI } from './useApi'
+import { RequestError } from 'core/interfaces'
 
 export type UseGetRequestStatus = MutationStatus
 
-export type UseGetRequest<TData = any, TError = any> = UseQueryResult<
+export type UseGetRequest<TData = any> = UseQueryResult<
   AxiosResponse<TData>,
-  AxiosError<TError>
+  AxiosError<RequestError>
 >
-
-interface TError {
-  message: string
-}
 
 export interface UseGetRequestConfigs extends AxiosRequestConfig {}
 
 export interface UseGetRequestOptions<TData = any>
-  extends UseQueryOptions<AxiosResponse<TData>, AxiosError<TError>> {}
+  extends UseQueryOptions<AxiosResponse<TData>, AxiosError<RequestError>> {}
 
-export const useGetRequest = <TData = any, TError = any>(
+export const useGetRequest = <TData = any>(
   url: string,
   options?: QueryObserverOptions<
-    AxiosResponse<TData, TError>,
-    TError,
-    AxiosResponse<TData, TError>
+    AxiosResponse<TData, RequestError>,
+    RequestError,
+    AxiosResponse<TData, RequestError>
   >,
   configs?: UseGetRequestConfigs,
-): UseGetRequest<TData, TError> => {
+): UseGetRequest<TData> => {
   const { API } = useAPI()
 
-  const queryArgs = useQuery<AxiosResponse<TData, TError>, any>({
+  const queryArgs = useQuery<AxiosResponse<TData, RequestError>, any>({
     ...options,
     queryKey: [url, configs],
     queryFn: () => API.get(url, configs),
