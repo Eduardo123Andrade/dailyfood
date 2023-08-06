@@ -28,6 +28,8 @@ export const StorageProvider: React.FC<StorageProviderProviderProps> = ({
       return initialValue
     }
 
+    if (!data) return data as T
+
     return JSON.parse(data)
   }
 
