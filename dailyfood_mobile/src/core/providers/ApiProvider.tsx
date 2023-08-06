@@ -17,7 +17,7 @@ export const ApiProvider: React.FC<ApiProvider> = ({ children }) => {
   const API = useMemo(
     () =>
       Axios.create({
-        baseURL: 'http://192.168.69.70:3333',
+        baseURL: 'http://192.168.1.10:4000/api',
       }),
     [],
   )
