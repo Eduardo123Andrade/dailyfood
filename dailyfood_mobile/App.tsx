@@ -4,15 +4,13 @@ import {
   HttpQueryProvider,
   StorageProvider,
   ThemeProvider,
+  UserProvider,
 } from 'core/providers'
-
 import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack'
-import { AuthenticationNavigator } from 'authentication'
-import { DailyFoodNavigator } from 'dailyfood'
-import { HomeScreen } from 'home/screens/HomeScreen'
+import { AppNavigator } from './src/Navigator'
 
 const Stack = createNativeStackNavigator()
 
@@ -23,33 +21,23 @@ const screenOptions: NativeStackNavigationOptions = {
 export default function App() {
   return (
     <StorageProvider>
-      <ApiProvider>
+      <UserProvider>
         <HttpQueryProvider>
-          <ThemeProvider>
-            <NavigationContainer>
-              <Stack.Navigator screenOptions={screenOptions}>
-                <Stack.Screen
-                  name="DailyFood"
-                  component={DailyFoodNavigator}
-                  options={screenOptions}
-                />
-
-                <Stack.Screen
-                  name="Authentication"
-                  component={AuthenticationNavigator}
-                  options={screenOptions}
-                />
-
-                <Stack.Screen
-                  name="Home"
-                  component={HomeScreen}
-                  options={screenOptions}
-                />
-              </Stack.Navigator>
-            </NavigationContainer>
-          </ThemeProvider>
+          <ApiProvider>
+            <ThemeProvider>
+              <NavigationContainer>
+                <Stack.Navigator screenOptions={screenOptions}>
+                  <Stack.Screen
+                    name="AppNavigator"
+                    component={AppNavigator}
+                    options={screenOptions}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </ThemeProvider>
+          </ApiProvider>
         </HttpQueryProvider>
-      </ApiProvider>
+      </UserProvider>
     </StorageProvider>
   )
 }
