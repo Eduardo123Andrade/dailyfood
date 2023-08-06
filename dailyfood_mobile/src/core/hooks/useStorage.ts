@@ -1,4 +1,4 @@
-import { StorageProviderContext } from 'core/providers'
+import { StorageProviderContext } from 'core/providers/StorageProvider'
 import { useContext } from 'react'
 
 export const useStorage = () => {
