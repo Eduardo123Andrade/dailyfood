@@ -1,4 +1,6 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { useAuthentication } from 'authentication/hooks'
+import { Login } from 'authentication/interfaces'
 import {
   BaseNavigationHeader,
   Button,
@@ -7,16 +9,11 @@ import {
 } from 'core/components'
 import { useForm } from 'core/hooks'
 import { FieldValidation } from 'core/validations'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SPACING } from 'theme'
 
 const { string } = FieldValidation
-
-interface LoginForm {
-  email: string
-  password: string
-}
 
 const SING_UP_VALIDATION_SCHEMA = FieldValidation.object({
   email: string().label('email').required('Email é obrigatorio'),
@@ -26,25 +23,22 @@ const SING_UP_VALIDATION_SCHEMA = FieldValidation.object({
     .label('Senha'),
 })
 
-const INITIAL_VALUES: LoginForm = {
+const INITIAL_VALUES: Login = {
   email: '',
   password: '',
 }
 
 export const LoginScreen = () => {
-  const onSubmit = (data: LoginForm) => {
-    console.log(data)
-  }
+  const { login } = useAuthentication()
 
-  const { handleSubmit, isValid, getFieldProps } = useForm<LoginForm>({
+  const onSubmit = (data: Login) => login(data)
+
+  const { handleSubmit, isValid, getFieldProps } = useForm<Login>({
     onSubmit,
     initialValues: INITIAL_VALUES,
     validationSchema: SING_UP_VALIDATION_SCHEMA,
   })
 
-  useEffect(() => {
-    console.log({ isValid })
-  }, [isValid])
   const emailProps = getFieldProps('email')
   const passwordProps = getFieldProps('password')
 
