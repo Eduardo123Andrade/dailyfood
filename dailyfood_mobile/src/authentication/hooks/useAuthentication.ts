@@ -17,6 +17,7 @@ const getUser = (data: AuthResponse): User => {
 
 export const useAuthentication = () => {
   const [, { setUser }] = useUser()
+
   const { mutate: loginMutate } = usePostRequest<AuthResponse, Login>(
     '/auth/login',
     {
@@ -24,8 +25,8 @@ export const useAuthentication = () => {
         const user = getUser(data)
         setUser(user)
       },
-      onError: (error) => {
-        console.log(JSON.stringify(error, null, 2))
+      onError: ({ response }) => {
+        console.log(JSON.stringify(response?.data.message, null, 2))
       },
     },
   )
