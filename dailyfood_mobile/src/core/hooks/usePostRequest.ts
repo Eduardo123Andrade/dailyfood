@@ -7,14 +7,23 @@ import {
 import { AxiosError, AxiosResponse } from 'axios'
 import { useAPI } from './useApi'
 
+interface TError {
+  message: string
+}
+
 export type UsePostRequestStatus = MutationStatus
 
-export type UsePostRequestOptionsType<TData, TError, TVariables> =
-  UseMutationOptions<AxiosResponse<TData>, AxiosError<TError>, TVariables, any>
+export interface UsePostRequestOptionsType<TData, TVariables>
+  extends UseMutationOptions<
+    AxiosResponse<TData>,
+    AxiosError<TError>,
+    TVariables,
+    any
+  > {}
 
-export const usePostRequest = <TData = any, TVariables = any, TError = any>(
+export const usePostRequest = <TData = any, TVariables = any>(
   url: string,
-  options?: UsePostRequestOptionsType<TData, TError, TVariables>,
+  options?: UsePostRequestOptionsType<TData, TVariables>,
 ) => {
   const { API } = useAPI()
 
