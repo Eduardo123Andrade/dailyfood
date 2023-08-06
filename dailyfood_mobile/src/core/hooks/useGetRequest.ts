@@ -15,11 +15,14 @@ export type UseGetRequest<TData = any, TError = any> = UseQueryResult<
   AxiosError<TError>
 >
 
-export type UseGetRequestConfigs = AxiosRequestConfig
-export type UseGetRequestOptions<TData = any, TError = any> = UseQueryOptions<
-  AxiosResponse<TData>,
-  AxiosError<TError>
->
+interface TError {
+  message: string
+}
+
+export interface UseGetRequestConfigs extends AxiosRequestConfig {}
+
+export interface UseGetRequestOptions<TData = any>
+  extends UseQueryOptions<AxiosResponse<TData>, AxiosError<TError>> {}
 
 export const useGetRequest = <TData = any, TError = any>(
   url: string,
