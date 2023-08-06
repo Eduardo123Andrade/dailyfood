@@ -21,13 +21,15 @@ interface UserProvider {
 
 export const UserProvider: React.FC<UserProvider> = ({ children }) => {
   const [user, updateUser] = useState<User>()
-  const { getData } = useStorage()
+  const { setData, getData } = useStorage()
 
   useEffect(() => {
     const user = getData<User>(USER_KEY)
     if (user) updateUser(user)
   }, [])
+
   const setUser = (user: User) => {
+    setData<User>(USER_KEY, user)
     updateUser(user)
   }
 
