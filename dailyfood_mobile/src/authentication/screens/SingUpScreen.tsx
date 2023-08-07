@@ -7,7 +7,8 @@ import {
   Screen,
   TextInput,
 } from 'core/components'
-import { useForm } from 'core/hooks'
+import { useForm, useMessageModal } from 'core/hooks'
+import { SimpleModal } from 'core/modals'
 import { FieldValidation, validateName } from 'core/validations'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
@@ -34,7 +35,9 @@ const INITIAL_VALUES: SingUp = {
 }
 
 export const SingUpScreen = () => {
-  const { singUp } = useAuthentication()
+  const [{ message, show }, { resetState, startMessageModal }] =
+    useMessageModal()
+  const { singUp } = useAuthentication(setErrorData)
 
   const onSubmit = (data: SingUp) => singUp(data)
 
@@ -49,6 +52,12 @@ export const SingUpScreen = () => {
   const passwordProps = getFieldProps('password')
 
   const onPress = () => handleSubmit()
+
+  const onRequestClose = () => resetState()
+
+  function setErrorData(message: string) {
+    startMessageModal(message)
+  }
 
   return (
     <Screen contentContainerStyles={styles.container}>
@@ -71,6 +80,12 @@ export const SingUpScreen = () => {
       <Button disabled={!isValid} onPress={onPress}>
         Cadastrar
       </Button>
+
+      <SimpleModal
+        visible={show}
+        message={message}
+        onRequestClose={onRequestClose}
+      />
     </Screen>
   )
 }

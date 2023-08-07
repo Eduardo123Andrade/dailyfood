@@ -7,7 +7,8 @@ import {
   Screen,
   TextInput,
 } from 'core/components'
-import { useForm } from 'core/hooks'
+import { useMessageModal, useForm } from 'core/hooks'
+import { SimpleModal } from 'core/modals'
 import { FieldValidation } from 'core/validations'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
@@ -29,7 +30,9 @@ const INITIAL_VALUES: Login = {
 }
 
 export const LoginScreen = () => {
-  const { login } = useAuthentication()
+  const [{ message, show }, { resetState, startMessageModal }] =
+    useMessageModal()
+  const { login } = useAuthentication(setErrorData)
 
   const onSubmit = (data: Login) => login(data)
 
@@ -43,6 +46,12 @@ export const LoginScreen = () => {
   const passwordProps = getFieldProps('password')
 
   const onPress = () => handleSubmit()
+
+  const onRequestClose = () => resetState()
+
+  function setErrorData(message: string) {
+    startMessageModal(message)
+  }
 
   return (
     <Screen contentContainerStyles={styles.container}>
@@ -59,6 +68,12 @@ export const LoginScreen = () => {
       <Button disabled={!isValid} onPress={onPress}>
         Entrar
       </Button>
+
+      <SimpleModal
+        visible={show}
+        message={message}
+        onRequestClose={onRequestClose}
+      />
     </Screen>
   )
 }
