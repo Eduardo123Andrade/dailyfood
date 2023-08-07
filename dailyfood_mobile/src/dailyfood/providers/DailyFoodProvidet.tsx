@@ -16,6 +16,7 @@ interface DailyFoodProviderState {
 
 interface DailyFoodProviderActions {
   addFood: (food: PartiallyFood) => void
+  clearList: () => void
   removeFood: (id: string) => void
   selectFood: (food: Food) => void
 }
@@ -33,17 +34,10 @@ interface DailyFoodProviderProps {
   children: React.ReactNode
 }
 
-const LIST_FOOD: Food[] = [...MOCKED_LIST_FOOD, ...MOCKED_LIST_FOOD].map(
-  (item, index) => ({
-    ...item,
-    id: `${index + 1}`,
-  }),
-)
-
 export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
   children,
 }) => {
-  const [foods, setFoods] = useState<Food[]>(LIST_FOOD)
+  const [foods, setFoods] = useState<Food[]>([])
   const [currentFood, setCurrentFood] = useState<Food>()
 
   const updateFood = (food: PartiallyFood) => {
@@ -77,6 +71,10 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
     })
   }
 
+  const clearList = () => {
+    setFoods([])
+  }
+
   return (
     <DailyFoodContext.Provider
       children={children}
@@ -87,6 +85,7 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
         },
         {
           addFood,
+          clearList,
           removeFood,
           selectFood,
         },
