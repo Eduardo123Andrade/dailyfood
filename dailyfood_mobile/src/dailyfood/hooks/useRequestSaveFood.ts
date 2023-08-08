@@ -15,7 +15,7 @@ interface Meal {
 type SetMessageFunction = (message: string) => void
 
 export const useRequestSaveFood = (setMessage: SetMessageFunction) => {
-  const [{ foods }, { clearList }] = useDailyFood()
+  const [{ foods, description }, { clearList }] = useDailyFood()
   const navigation = useNavigation()
 
   const { mutate } = usePostRequest<any, Meal>('/meals/create', {
@@ -35,7 +35,7 @@ export const useRequestSaveFood = (setMessage: SetMessageFunction) => {
     }))
 
     mutate({
-      description: 'Almoço',
+      description,
       foods: mappedFoods,
       measurement_date: new Date(),
     })
