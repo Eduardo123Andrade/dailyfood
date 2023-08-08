@@ -1,6 +1,5 @@
 import { generateUUID } from 'core/utils'
 import { Food } from 'dailyfood/interfaces'
-import { MOCKED_LIST_FOOD } from 'dailyfood/mock/foods'
 import React, { createContext, useState } from 'react'
 
 interface PartiallyFood {
@@ -11,12 +10,14 @@ interface PartiallyFood {
 
 interface DailyFoodProviderState {
   currentFood: Food
+  description: string
   foods: Food[]
 }
 
 interface DailyFoodProviderActions {
   addFood: (food: PartiallyFood) => void
   clearList: () => void
+  setDescription: (description: string) => void
   removeFood: (id: string) => void
   selectFood: (food: Food) => void
 }
@@ -37,6 +38,8 @@ interface DailyFoodProviderProps {
 export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
   children,
 }) => {
+  const [description, updateDescription] = useState<string>()
+
   const [foods, setFoods] = useState<Food[]>([])
   const [currentFood, setCurrentFood] = useState<Food>()
 
@@ -75,17 +78,23 @@ export const DailyFoodProvider: React.FC<DailyFoodProviderProps> = ({
     setFoods([])
   }
 
+  const setDescription = (description: string) => {
+    updateDescription(description)
+  }
+
   return (
     <DailyFoodContext.Provider
       children={children}
       value={[
         {
           currentFood,
+          description,
           foods,
         },
         {
           addFood,
           clearList,
+          setDescription,
           removeFood,
           selectFood,
         },
