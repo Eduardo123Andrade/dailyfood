@@ -37,7 +37,7 @@ export const MealNameScreen = () => {
 }
 
 const navigationOptions: NativeStackNavigationOptions = {
-  header: () => <NavigationHeader title="Inserir alimentos" />,
+  header: () => <NavigationHeader title="Nome da refeição" />,
 }
 
 MealNameScreen.NavigationOptions = navigationOptions
