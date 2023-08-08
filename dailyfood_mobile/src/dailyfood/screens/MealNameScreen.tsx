@@ -1,18 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { Button, Screen, Separator, TextInput } from 'core/components'
-import { useTheme } from 'core/hooks'
-import { RenderItem } from 'core/interfaces'
+import { Button, Screen, TextInput } from 'core/components'
 import { StackNavigationProps } from 'core/types'
-import {
-  FoodItemList,
-  IncludeFoodData,
-  NavigationHeader,
-} from 'dailyfood/components'
+import { NavigationHeader } from 'dailyfood/components'
 import { useDailyFood } from 'dailyfood/hooks'
-import { Food } from 'dailyfood/interfaces'
 import React from 'react'
-import { FlatList, StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { SPACING } from 'theme'
 
 type RootStackParamList = {
