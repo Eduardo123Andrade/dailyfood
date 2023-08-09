@@ -1,1 +1,2 @@
-export type { Food } from './Food.interface'
+export { Food } from './Food.interface'
+export { Meal } from './Meal.interface'
