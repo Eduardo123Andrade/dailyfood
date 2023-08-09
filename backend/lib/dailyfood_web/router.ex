@@ -21,6 +21,7 @@ defmodule DailyfoodWeb.Router do
     post("/meals/create", MealsController, :create)
     get("/meals/:initial_date/:final_date", MealsController, :show)
     post("/meals/generate-pdf", MealsController, :generate_pdf)
+    post("/meals/generate-pdf-by-date", MealsController, :generate_pdf_by_dates)
   end
 
   scope "/api", DailyfoodWeb do
