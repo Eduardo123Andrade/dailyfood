@@ -1,6 +1,7 @@
 import { usePostRequest } from 'core/hooks'
 import { useDailyFood } from './useDailyFood'
 import { useNavigation } from '@react-navigation/native'
+import { SetMessageFunction } from 'core/types/SetMessageFunction'
 
 interface Food {
   description: string
@@ -11,8 +12,6 @@ interface Meal {
   description: string
   foods: Food[]
 }
-
-type SetMessageFunction = (message: string) => void
 
 export const useRequestSaveFood = (setMessage: SetMessageFunction) => {
   const [{ foods, description }, { clearList }] = useDailyFood()
